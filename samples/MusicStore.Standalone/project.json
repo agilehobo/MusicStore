@@ -44,6 +44,7 @@
     }
   },
   "dependencies": {
+    "MediatR.Extensions.Microsoft.DependencyInjection": "1.0.1",
     "Microsoft.AspNetCore": "1.2.0-*",
     "Microsoft.AspNetCore.AspNetCoreModule": "1.0.0-*",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.2.0-*",
