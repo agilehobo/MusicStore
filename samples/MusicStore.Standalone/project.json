@@ -62,7 +62,8 @@
     "Microsoft.AspNetCore.StaticFiles": "1.2.0-*",
     "Microsoft.EntityFrameworkCore.InMemory": "1.2.0-*",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.2.0-*",
-    "Microsoft.Extensions.Configuration.CommandLine": "1.2.0-*"
+    "Microsoft.Extensions.Configuration.CommandLine": "1.2.0-*",
+    "OdeToCode.AddFeatureFolders": "1.0.4"
   },
   "frameworks": {
     "netcoreapp1.1": {

@@ -70,7 +70,7 @@ namespace MusicStore
             services.AddLogging();
 
             // Add MVC services to the services container
-            services.AddMvc();
+            services.AddMvc().AddFeatureFolders();
 
             // Add memory cache services
             services.AddMemoryCache();

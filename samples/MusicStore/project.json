@@ -26,6 +26,7 @@
     "include": [
       "Areas",
       "Views",
+      "Features/**/*.cshtml",
       "wwwroot",
       "config.json",
       "web.config",
@@ -54,13 +55,18 @@
     "Microsoft.Extensions.Configuration.CommandLine": "1.2.0-*"
   },
   "frameworks": {
-    "net451": {},
+    "net452": {
+      "dependencies": {        
+        "OdeToCode.AddFeatureFolders": "1.0.4"
+      }
+    },
     "netcoreapp1.1": {
       "dependencies": {
         "Microsoft.NETCore.App": {
           "version": "1.1.0-*",
           "type": "platform"
-        }
+        },
+        "OdeToCode.AddFeatureFolders": "1.0.4"
       }
     }
   },
