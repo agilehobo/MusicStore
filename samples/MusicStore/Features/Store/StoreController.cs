@@ -27,12 +27,18 @@ namespace MusicStore.Features.Store
         {
             var viewModel = await _mediator.SendAsync(new Browse.Query(genre));
 
+            if (viewModel.Genre == null)
+                return NotFound();
+
             return View(viewModel);
         }
 
         public async Task<IActionResult> Details(int id)
         {
             var viewModel = await _mediator.SendAsync(new Details.Query(id));
+
+            if (viewModel.Album == null)
+                return NotFound();
 
             return View(viewModel);
         }
