@@ -1,29 +1,29 @@
-﻿@model Album
+﻿@model MusicStore.Features.Store.Details.Result
 
 @{
-    ViewBag.Title = "Album - " + Model.Title;
+    ViewBag.Title = "Album - " + Model.Album.Title;
 }
 
-<h2>@Model.Title</h2>
+<h2>@Model.Album.Title</h2>
 
 <p>
-    <img alt="@Model.Title" src="@Url.Content(@Model.AlbumArtUrl)" />
+    <img alt="@Model.Album.Title" src="@Url.Content(@Model.Album.AlbumArtUrl)"/>
 </p>
 
 <div id="album-details">
     <p>
         <em>Genre:</em>
-        @Model.Genre.Name
+        @Model.Album.Genre.Name
     </p>
     <p>
         <em>Artist:</em>
-        @Model.Artist.Name
+        @Model.Album.Artist.Name
     </p>
     <p>
         <em>Price:</em>
-        <label>@Model.Price</label>
+        <label>@Model.Album.Price</label>
     </p>
     <p class="button">
-        <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@Model.AlbumId">Add to cart</a>
+        <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@Model.Album.AlbumId">Add to cart</a>
     </p>
 </div>

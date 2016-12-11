@@ -70,7 +70,6 @@ namespace MusicStore.Features.Home
             {
                 // Group the order details by album and return
                 // the albums with the highest count
-
                 return dbContext.Albums
                     .OrderByDescending(a => a.OrderDetails.Count)
                     .Take(count)

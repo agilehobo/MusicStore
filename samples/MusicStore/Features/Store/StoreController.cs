@@ -29,5 +29,12 @@ namespace MusicStore.Features.Store
 
             return View(viewModel);
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var viewModel = await _mediator.SendAsync(new Details.Query(id));
+
+            return View(viewModel);
+        }
     }
 }

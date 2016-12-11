@@ -14,14 +14,14 @@ namespace MusicStore.Features.ShoppingCart
     {
         public class Command : ICancellableAsyncRequest
         {
-            public string CartId { get; private set; }
-            public int AlbumId { get; private set; }
-
             public Command(string cartId, int albumId)
             {
                 CartId = cartId;
                 AlbumId = albumId;
             }
+
+            public string CartId { get; }
+            public int AlbumId { get; }
         }
 
         public class Handler : CancellableAsyncRequestHandler<Command>

@@ -1,29 +1,29 @@
 ﻿// Copyright (c) .NET Foundation. All rights reserved.
 // See License.txt in the project root for license information
 
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using MusicStore.Models;
 
-namespace MusicStore.Features.Store
+namespace MusicStore.Features.ShoppingCart
 {
-    public class Browse
+    public class Index
     {
-        public class Query : IAsyncRequest<Result>
-        {
-            public Query(string genre)
-            {
-                Genre = genre;
-            }
-
-            public string Genre { get; }
-        }
-
         public class Result
         {
-            public Genre Genre { get; set; }
+            public List<CartItem> CartItems { get; set; }
+            public decimal CartTotal { get; set; }
+        }
+
+        public class Query : IAsyncRequest<Result>
+        {
+            public Query(string cartId)
+            {
+                CartId = cartId;
+            }
+
+            public string CartId { get; }
         }
 
         public class Handler : IAsyncRequestHandler<Query, Result>
@@ -37,12 +37,13 @@ namespace MusicStore.Features.Store
 
             public async Task<Result> Handle(Query message)
             {
-                var genre = await _dbContext.Genres
-                    .Include(g => g.Albums)
-                    .Where(g => g.Name == message.Genre)
-                    .FirstOrDefaultAsync();
+                var cart = Models.ShoppingCart.GetCart(_dbContext, message.CartId);
 
-                return new Result { Genre = genre };
+                return new Result
+                {
+                    CartItems = await cart.GetCartItems(),
+                    CartTotal = await cart.GetTotal()
+                };
             }
         }
     }

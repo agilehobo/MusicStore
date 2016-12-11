@@ -26,5 +26,14 @@ namespace MusicStore.Features.ShoppingCart
             // Go back to the main store page for more shopping
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Index()
+        {
+            var cartId = Models.ShoppingCart.GetCartId(HttpContext);
+            var viewModel = await _mediator.SendAsync(new Index.Query(cartId));
+
+            // Return the view
+            return View(viewModel);
+        }
     }
 }
