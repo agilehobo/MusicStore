@@ -1,14 +1,15 @@
-﻿@model Genre
+﻿@model MusicStore.Features.Store.Browse.Result
+
 @{
     ViewBag.Title = "Browse Albums";
 }
 <div class="genre">
     <h3>
-        <em>@Model.Name</em> Albums
+        <em>@Model.Genre.Name</em> Albums
     </h3>
 
     <ul id="album-list" class="list-unstyled">
-        @foreach (var album in Model.Albums)
+        @foreach (var album in Model.Genre.Albums)
         {
             <li class="col-lg-2 col-md-2 col-sm-2 col-xs-4 container">
                 <a asp-controller="Store" asp-action="Details" asp-route-id="@album.AlbumId">
